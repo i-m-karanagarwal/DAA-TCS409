@@ -1,0 +1,30 @@
+Q-> Binary Search
+
+
+int n,i,j,flag=0;
+scanf(n)
+int arr[n];
+for(int i=;i<n;i++)
+	scanf(arr[i]);
+int lowerLimit=0, upperLimit=n;
+int key;
+scanf(key);
+
+
+while(lowerLimit<=upperLimit)
+{
+	mid=(lowerLimit+upperLimit)/2;
+
+	if(arr[mid]==key)
+		flag=1;
+	else if(arr[mid]>key)
+		upperLimit=mid-1;
+	else
+		lowerLimit=mid+1;
+}
+
+if(flag==1)
+	print(Key found);
+else
+	print(Key not found);
+
