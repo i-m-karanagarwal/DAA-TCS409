@@ -1,0 +1,30 @@
+Linear_Search
+
+
+int i,j,key,flag=0,n,com=0;
+
+int arr[n];
+
+scanf(n);
+
+for(i=0;i<n;i++)
+	scanf(arr[i]);
+
+scanf(key);
+
+
+for(i=0;i<n;i++)
+{
+	com++;
+	if(arr[i]==key)
+	{
+		flag=1;
+		break;
+	}
+}
+
+
+if(flag==1)
+	print("Key Found with %d comparision");
+else
+	print("Key Not Found with %d comparision");
