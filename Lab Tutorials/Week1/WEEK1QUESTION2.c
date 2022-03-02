@@ -1,10 +1,11 @@
 #include <stdio.h>
 
-int binarysearch(int a[], int n, int key)
+int binarysearch(int a[], int n, int key, int *c)
 {
     int s=0;
     int e=n;
     while(s<=e){
+        (*c)++;
         int mid=(s+e)/2;
         if(a[mid]==key){
             return mid;
@@ -20,7 +21,7 @@ int binarysearch(int a[], int n, int key)
 }
 int main()
 {
-    int n,flag;
+    int n,flag,com=0;
     printf("Enter number of elements: ");
     scanf("%d",&n);
 
@@ -34,10 +35,10 @@ int main()
     int key;
     printf("Enter key to be found: ");
     scanf("%d",&key);
-    flag=binarysearch(a, n, key);
+    flag=binarysearch(a, n, key ,&com);
 
     if(flag!=-1)
-        printf("Key found");
+        printf("Key found in %d comparision",com);
     else
-        printf("Key not found");
+        printf("Key not found in %d compaision",com);
 }
