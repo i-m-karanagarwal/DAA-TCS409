@@ -4,7 +4,7 @@ Q-> Binary Search
 int n,i,j,flag=0;
 scanf(n)
 int arr[n];
-for(int i=;i<n;i++)
+for(int i=0;i<n;i++)
 	scanf(arr[i]);
 int lowerLimit=0, upperLimit=n;
 int key;
@@ -13,7 +13,7 @@ scanf(key);
 
 while(lowerLimit<=upperLimit)
 {
-	mid=(lowerLimit+upperLimit)/2;
+	mid=lowerLimit + (upperLimit-lowerLimit)/2;
 
 	if(arr[mid]==key)
 		flag=1;

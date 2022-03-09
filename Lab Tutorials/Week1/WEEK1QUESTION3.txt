@@ -1,0 +1,26 @@
+int n,m,i,j,flag=0,key;
+
+scanf(n);
+int arr[n];
+for(i=0;i<n;i++)
+    scanf(arr[n]);
+
+scanf(key);
+m=sqrt(n);
+
+for(i=0;i<n;i*=m)
+{
+    if(arr[i]>key)
+    {
+        for(j=arr[(i/m)+1]; j<arr[i];j++)
+        {
+            if(arr[j]==key)
+                flag=1;
+        }
+    }
+}
+
+if(flag==1)
+    print("Key Found");
+else
+    print("Key not Found");
