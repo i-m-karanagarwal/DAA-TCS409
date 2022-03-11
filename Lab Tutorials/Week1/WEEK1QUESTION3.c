@@ -14,7 +14,7 @@ int main()
 
     m=sqrt(n);
     printf("Enter key to be found: ");
-    scanf("%d",&key);
+    scanf("%d",&key);   
 
     for(i=0; i<n; i+=m)
     {
