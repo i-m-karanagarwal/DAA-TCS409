@@ -3,6 +3,7 @@ using namespace std;
 void display(int [], int);
 void mergeSort(int [], int, int);
 void merge(int [], int , int , int );
+void inverseCompare(int [], int);
 
 int main(){
     int t;
@@ -22,6 +23,7 @@ int main(){
         display(arr,n);
 
         mergeSort(arr,0,n-1);
+        inverseCompare(arr,n);
 
         cout<<"\nArray after sorting: ";
         display(arr,n);
@@ -82,4 +84,19 @@ void merge(int arr[], int l, int m, int r){
         arr[k]=R[j];
         j++,k++;
     }
+}
+
+void inverseCompare(int arr[], int n){
+
+    int inversion=0,comparision=0;
+    for(int i=0; i<n; i++){
+        for(int j=i; j<n; j++){
+            comparision++;
+            if(arr[i]>arr[j]){
+                inversion++;
+        }
+    }
+    }
+
+    cout<<"No if inversions: "<<inversion<<"\nNo of comparisions: "<<comparision<<endl;
 }
