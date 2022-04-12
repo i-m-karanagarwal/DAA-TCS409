@@ -34,7 +34,7 @@ int main()
         if(flag==1)
             printf("%d found in %d comparisions\n",key,com);
         else
-            printf("Key Not found\n");
+            printf("Key Not found in %d comparisions\n",com);
         T--;
     }
 }

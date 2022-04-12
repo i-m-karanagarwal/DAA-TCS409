@@ -8,10 +8,10 @@ int main()
     while(t){
 
         int n;
-        scanf("%d", &n);
+        scanf("\n%d", &n);
         int arr[n];
         for(int i=0; i<n; i++)
-            scanf("%d", &arr[i]);
+            scanf("\n%d", &arr[i]);
         int flag=0;
         for(int i=0,j=i+1; i<n, j<n; i++,j++){
             for(int k=0;k<n;k++){

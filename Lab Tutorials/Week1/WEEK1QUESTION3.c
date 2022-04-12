@@ -3,9 +3,13 @@
 
 int main()
 {
+    int t;
+    printf("Enter number of test cases: ");
+    scanf("%d", &t);
+    while(t){
     int i,j,n,m,key,flag=-1;
 
-    printf("Enter number of elements: ");
+    printf("\nEnter number of elements: ");
     scanf("%d",&n);
     int arr[n];
     printf("Enter elements of array: ");
@@ -14,12 +18,15 @@ int main()
 
     m=sqrt(n);
     printf("Enter key to be found: ");
-    scanf("%d",&key);   
+    scanf("%d",&key);
+    int comp=0;
 
     for(i=0; i<n; i+=m)
     {
+        comp++;
         if(arr[i]==key)
         {
+
             flag=i;
             break;
         }
@@ -27,15 +34,20 @@ int main()
         {
             for(j=(i/m)+1; j<i;j++)
             {
-                if(arr[j]==key)
+                comp++;
+                if(arr[j]==key){
                     flag=j;
-                    break;
+                    break;}
             }
         }
     }
 
     if(flag==-1)
-        printf("Key not found");
+        printf("Key not found in %d comp",comp);
     else
-        printf("Key found at %d index",flag);
+        printf("Key found at %d index in %d comp",flag,comp);
+
+
+        t--;
+    }
 }

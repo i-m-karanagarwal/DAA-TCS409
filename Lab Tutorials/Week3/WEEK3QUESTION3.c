@@ -3,16 +3,21 @@ void findDuplicate(int arr[], int n);
 void sort(int arr[], int l, int r);
 void merge(int a[], int l, int m, int r);
 int main(){
-    int n;
-    printf("Enter Size of array: ");
-    scanf("%d",&n);
-    int arr[n];
+    int t;
+    printf("Enter test cases: ");
+    scanf("%d", &t);
+    while(t){
+        int n;
+        printf("\nEnter Size of array: ");
+        scanf("%d",&n);
+        int arr[n];
 
-    for(int i=0; i<n; i++){
-        scanf("%d",&arr[i]);
+        for(int i=0; i<n; i++){
+            scanf("%d",&arr[i]);
+        }
+        findDuplicate(arr, n);
+        t--;
     }
-    findDuplicate(arr, n);
-
 }
 
 
@@ -79,6 +84,6 @@ void merge(int a[], int l, int m, int r){
             j++;
             k++;
         }
-    
+
 
 }
