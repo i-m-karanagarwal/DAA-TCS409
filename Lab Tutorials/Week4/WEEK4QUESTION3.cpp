@@ -36,8 +36,12 @@ int kthSmallest(int arr[], int l, int r, int k)
 }
 int main()
 {
+	int t;
+	cout<<"Enter number of test cases: ";
+	cin>>t;
+	while(t--){
 	int n,k;
-    cout<<"Enter the size of array:";
+    cout<<"\nEnter the size of array:";
     cin>>n;
     int arr[n];
     cout<<"Enter the elements of array:";
@@ -47,5 +51,6 @@ int main()
     cin>>k;
 	cout << "K-th smallest element is "
 		<< kthSmallest(arr, 0, n - 1, k);
+	}
 	return 0;
 }

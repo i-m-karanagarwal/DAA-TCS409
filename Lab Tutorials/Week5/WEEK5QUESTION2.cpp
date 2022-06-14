@@ -9,7 +9,7 @@ int main(){
     while(t){
 
         int n;
-        cout<<"Enter number of elements: ";
+        cout<<"\nEnter number of elements: ";
         cin>>n;
         int arr[n];
         for(int i=0;i<n; i++){

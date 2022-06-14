@@ -22,8 +22,9 @@ int main(){
         cout<<"\nArray before sorting: ";
         display(arr,n);
 
-        mergeSort(arr,0,n-1);
         inverseCompare(arr,n);
+        mergeSort(arr,0,n-1);
+        
 
         cout<<"\nArray after sorting: ";
         display(arr,n);
@@ -98,5 +99,5 @@ void inverseCompare(int arr[], int n){
     }
     }
 
-    cout<<"No if inversions: "<<inversion<<"\nNo of comparisions: "<<comparision<<endl;
+    cout<<"\nNo of inversions: "<<inversion<<"\nNo of comparisions: "<<comparision<<endl;
 }
