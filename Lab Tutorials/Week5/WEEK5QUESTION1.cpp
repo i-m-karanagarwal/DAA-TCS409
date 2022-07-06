@@ -31,9 +31,7 @@ int main(){
         for(int i=0; i<n; i++){
             count[(int)arr[i]-97]++;
         }
-        // for(int i=0; i<count_index; i++){
-        //     cout<<count[i];
-        // }
+        
         int occurMax=count[0],maxIndex=0;
 
         for(int i=0; i<count_index; i++){

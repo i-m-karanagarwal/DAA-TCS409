@@ -1,71 +1,90 @@
+#include <iostream>
 #include <bits/stdc++.h>
 using namespace std;
-
-class Edge{
-    public:
-    int source;
-    int dest;
-    int weight;
-};
-void kruskals(Edge* input, int n, int e);
-int find_Parent(int v, int parent[]);
-int main(){
-    int n,e,s,d,w;
-    cout<<"Enter number of nodes and number of edges: ";
-    cin>>n>>e;
-    Edge* input = new Edge[e];
-
-    cout<<"Enter edges src dest and weights: ";
-    for(int i=0;i<e; i++){
-        cin>>s>>d>>w;
-
-        input[i].source=s;
-        input[i].dest=d;
-        input[i].weight=w;
-    }
-
-    kruskals(input,n,e);
+int find(int s, int *parent)
+{
+    if (parent[s] < 0)
+        return s;
+    return find(parent[s], parent);
 }
-
-
-bool Comparator(Edge e1, Edge e2){
-    return e1.weight<e2.weight;
-}
-void kruskals(Edge* input, int n, int e){
-    int parent[n];
-    for(int i=0;i<n; i++)
-        parent[i]=i;
-
-    sort(input,input+e, Comparator);
-    Edge* output = new Edge[n-1];
-
-    int i=0,c=0;
-
-    while(c<n-1){
-        Edge curr = input[i];
-
-        int srcParent = find_Parent(curr.source,parent);
-        int destParent = find_Parent(curr.dest,parent);
-
-        if(srcParent!=destParent){
-            parent[curr.source]=curr.dest;
-            output[c]=curr;
-            c++;
+void unionByweight(int s, int d, int *parent)
+{
+    int a = find(s, parent);
+    int b = find(d, parent);
+    if (a != b)
+    {
+        if (a > b)
+        {
+            parent[b] += parent[a];
+            parent[a] = b;
         }
-        i++;
+        else
+        {
+            parent[a] += parent[b];
+            parent[b] = a;
+        }
     }
-    int ans=0;
-    for(int i=0; i<n-1; i++){
-        cout<<output[i].source<<" "<<output[i].dest<<" "<<output[i].weight<<endl;
-        ans+=output[i].weight;
-    }
-
-    cout<<ans;
 }
+vector<pair<int, pair<int, int>>> krushkels(vector<pair<int, pair<int, int>>> &v, int vertex)
+{
+    vector<pair<int, pair<int, int>>> ans;
+    int parent[vertex];
+    for (int i = 0; i < vertex; i++)
+    {
+        parent[i] = -1;
+    }
 
-int find_Parent(int v, int parent[]){
-    if(v==parent[v])
-        return v;
+    int s, d, w;
+    sort(v.begin(), v.end());
+    int E = v.size();
 
-    return find_Parent(parent[v], parent);
+    for (int i = 0; i < E; i++)
+    {
+        s = v[i].second.first;
+        d = v[i].second.second;
+        w = v[i].first;
+
+        if (find(s, parent) != find(d, parent))
+        {
+            ans.push_back(v[i]);
+            unionByweight(s, d, parent);
+        }
+    }
+    return ans;
+}
+int main()
+{
+    int Ver;
+    cout << "enter the no. of vertex and edges\n";
+    cin >> Ver;
+    vector<pair<int, pair<int, int>>> v, res;
+    vector<vector<int>> matrix(Ver, vector<int>(Ver, 0));
+    for (int i = 0; i < Ver; i++)
+    {
+        for (int j = 0; j < Ver; j++)
+            cin >> matrix[i][j];
+    }
+    for (int i = 0; i < Ver; i++)
+        for (int j = i; j < Ver; j++)
+        {
+            if (matrix[i][j] != 0)
+            {
+                int w, s, d;
+                w = matrix[i][j];
+                s = i;
+                d = j;
+                v.push_back(make_pair(w, make_pair(s, d)));
+            }
+        }
+    res = krushkels(v, Ver);
+    int sum = 0;
+    for (int i = 0; i < res.size(); i++)
+    {
+        sum += res[i].first;
+        cout << res[i].second.first << "->" << res[i].second.second << "and-w--" << res[i].first << " ";
+    }
+    cout << "\n\nThe minimum spanning tree sum:" << endl;
+    cout << sum;
+
+    return 0;
 }
